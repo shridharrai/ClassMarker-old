@@ -8,11 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Dashboard</h1>
-<h1>welcome <s:property value="userid"/></h1>
-<s:form name="showsemesterbranch" action="showsemesterbranch">
-                <%-- <s:textfield name="username" /> --%>
-                <s:submit value="Fetch Records"/>
+<s:form action="resultAction" namespace="/">
+
+<h2>
+	<s:combobox label="What's your favor fruit" headerKey="-1" headerValue="--- Select ---"	list="fruits" name="yourFruits" />
+</h2>
+
+
+<s:submit value="submit" name="submit" />
+	
 </s:form>
+
 </body>
 </html>
