@@ -9,7 +9,9 @@ public class Branch {
 	private String branchname;
 	private String branchdesc;
 	
-	public String addsem() throws ClassNotFoundException, SQLException {
+	public Branch() {}
+	
+	public String addbranch() throws ClassNotFoundException, SQLException {
 		if(classmarkerDAO.addbranch(branchname, branchdesc)==true) {
 			return "success";
 		}
@@ -30,6 +32,11 @@ public class Branch {
 
 	public void setBranchdesc(String branchdesc) {
 		this.branchdesc = branchdesc;
+	}
+
+	@Override
+	public String toString() {
+		return "Branch [branchname=" + branchname + ", branchdesc=" + branchdesc + "]";
 	}
 	
 	

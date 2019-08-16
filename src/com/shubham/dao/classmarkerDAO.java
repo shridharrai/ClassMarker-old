@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.naming.NamingException;
 
+import com.shubham.actions.Branch;
 import com.shubham.dao.CommonDAO;
 
 public interface classmarkerDAO {
@@ -139,10 +140,10 @@ public interface classmarkerDAO {
 		 return false;
 	}
 	
-	public static boolean addsub(String subjectcode,int subjectid,String subjectname,String subjectdesc) throws SQLException, ClassNotFoundException {
+	public static boolean addsub(String subjectcode,int subjectid,String subjectname,String subjectdesc,String selectedbranch,String selectedsemester) throws SQLException, ClassNotFoundException {
 		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		PreparedStatement pstmt,pstmtmap = null;
+//		ResultSet rs,rsmap = null;
 //		String msg ="Invalid Userid or Password";
 		con = CommonDAO.getConnection();
 		pstmt = con.prepareStatement("insert into subject_mst(subjectcode,subjectid,subjectname,subjectdesc) values(?,?,?,?)");
@@ -151,9 +152,16 @@ public interface classmarkerDAO {
 		pstmt.setString(3, subjectname);
 		pstmt.setString(4, subjectdesc);
 		int recordCount = pstmt.executeUpdate();
+		pstmtmap = con.prepareStatement("insert into subject_branch_semester_mapping(subjectid,branchid,semesterid) values((select sid from subject_mst where subjectname=?),(select branchid from branch_mst where branchname=?),(select semid from semester_mst where semestername=?))");
+		pstmtmap.setString(1, subjectname);
+		pstmtmap.setString(2, selectedbranch);
+		pstmtmap.setString(3, selectedsemester);
+		int recordcountmap = pstmtmap.executeUpdate();
 		if(recordCount>0) {
-			System.out.println("Subject Added");
-			return true;
+			if(recordcountmap>0) {
+				System.out.println("Subject Added");
+				return true;
+			}
 		}
 		return false;
 	}
@@ -191,5 +199,26 @@ public interface classmarkerDAO {
 		}
 		return false;
 	}
-}
 
+//	public static ResultSet existingbranch() throws ClassNotFoundException, SQLException {
+//		Connection con = null;
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		ArrayList<Branch> branchlist = new ArrayList<>();
+//		con = CommonDAO.getConnection();
+//		pstmt = con.prepareStatement("select branchname,branchdesc from branch_mst where status=\"Y\"");
+//		rs = pstmt.executeQuery();
+////		while(rs.next()) {
+////			Branch branch = new Branch();
+//////			roledto.setRoleid(rs.getInt("roleid"));
+////			branch.setBranchname(rs.getString("branchname"));
+////			branch.setBranchdesc(rs.getString("branchdesc"));
+////			branchlist.add(branch);
+//////			System.out.println(rolelist);
+////		}
+////		rs.close();
+////		pstmt.close();
+////		con.close();
+//		return rs;		
+//	}
+}

@@ -27,5 +27,9 @@ public class Semester {
 	public void setSemesterdesc(String semesterdesc) {
 		this.semesterdesc = semesterdesc;
 	}
+	@Override
+	public String toString() {
+		return "Semester [semestername=" + semestername + ", semesterdesc=" + semesterdesc + "]";
+	}
 	
 }

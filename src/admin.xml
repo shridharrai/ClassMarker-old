@@ -25,9 +25,42 @@
 	<result name="fail">/dashboard.jsp</result>
 	</action>
 	<action name="addsem" class="com.shubham.actions.Semester" method="addsem">
-	<result name="success">/dashboard.jsp</result>
+	<result name="success">/semester.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action>
+	
+	<action name="showsemester" class="com.shubham.actions.FetchSemester" method="execute">
+	<result name="success">/semester.jsp</result>
+	<result name="fail">/dashboard.jsp</result>
+	</action>
+	
+	<action name="addbranch" class="com.shubham.actions.Branch" method="addbranch">
+	<result name="success">/branch.jsp</result>
+	<result name="fail">/dashboard.jsp</result>
+	</action>	
+	
+	<action name="showbranch" class="com.shubham.actions.FetchBranch" method="execute">
+	<result name="success">/branch.jsp</result>
+	<result name="fail">/login.jsp</result>
+	</action>
+	
+	<action name="showsemesterbranch" class="com.shubham.actions.FetchBranchSemester" method="execute">
+	<result name="success">/subject.jsp</result>
+	<result name="fail">/login.jsp</result>
+	</action>  
+	
+	<action name="addsubject" class="com.shubham.actions.Subject" method="addsubject">
+	<result name="success">/results.jsp</result>
+	<result name="fail">/login.jsp</result>
+	</action>
+	
+	<!-- <action name="addsubject" class="com.shubham.actions.Subject" method="addsubject">
+	<result name="success">/subject.jsp</result>
+	<result name="fail">/login.jsp</result>
+	</action> -->
+	
+	<!-- fetch showsemesterbranch.action a tag  -->
+	
 </package>
 
 

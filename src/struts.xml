@@ -6,9 +6,20 @@
 	<constant name="struts.devMode" value="true" />
 	<include file="admin.xml"></include>
 	<package name="default" namespace="/" extends="struts-default">
+	
 	<action name="login" class="com.shubham.actions.Login" method="dologin">
 	<result name="success">/dashboard.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action>
+	
+	<action name="comboBoxAction" class="com.shubham.actions.ComboBoxAction" method="display">
+	<result name="none">/combobox.jsp</result>
+   </action>
+		
+   <action name="resultAction" class="com.shubham.actions.ComboBoxAction">
+	<result name="success">/result.jsp</result>
+   </action>
+	
+	
 	</package>
 	</struts>

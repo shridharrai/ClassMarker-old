@@ -1,6 +1,7 @@
 package com.shubham.actions;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.shubham.dao.classmarkerDAO;
 
@@ -10,14 +11,53 @@ public class Subject {
 	private String subjectcode;
 	private String subjectname;
 	private String subjectdesc;
+	private Branch selectedbranch;
+	private Semester selectedsemester;
+	List<Branch> branchlist;
+	List<Semester> semesterlist;
 	
-	public String addsub() throws ClassNotFoundException, SQLException {
-		if(classmarkerDAO.addsub(subjectcode, subjectid, subjectname, subjectdesc)) {
+
+	public String addsubject() throws ClassNotFoundException, SQLException {
+		if(classmarkerDAO.addsub(subjectcode, subjectid, subjectname, subjectdesc,selectedbranch.getBranchname(),selectedsemester.getSemestername())) {
 			return "success";
 		}
 		return "fail";
 	}
 	
+	
+	public List<Branch> getBranchlist() {
+		return branchlist;
+	}
+
+	public void setBranchlist(List<Branch> branchlist) {
+		this.branchlist = branchlist;
+	}
+
+	public List<Semester> getSemesterlist() {
+		return semesterlist;
+	}
+
+	public void setSemesterlist(List<Semester> semesterlist) {
+		this.semesterlist = semesterlist;
+	}
+
+	
+	public Branch getSelectedbranch() {
+		return selectedbranch;
+	}
+
+	public void setSelectedbranch(Branch selectedbranch) {
+		this.selectedbranch = selectedbranch;
+	}
+
+	public Semester getSelectedsemester() {
+		return selectedsemester;
+	}
+
+	public void setSelectedsemester(Semester selectedsemester) {
+		this.selectedsemester = selectedsemester;
+	}
+
 	public int getSubjectid() {
 		return subjectid;
 	}
@@ -43,5 +83,8 @@ public class Subject {
 		this.subjectdesc = subjectdesc;
 	}
 	
+	public String execute() {
+		return "success";
+	}
 	
 }
