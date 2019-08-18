@@ -1,8 +1,13 @@
 package com.shubham.actions;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.shubham.dao.CommonDAO;
 import com.shubham.dao.classmarkerDAO;
 
 public class Subject {
@@ -11,50 +16,89 @@ public class Subject {
 	private String subjectcode;
 	private String subjectname;
 	private String subjectdesc;
-	private Branch selectedbranch;
-	private Semester selectedsemester;
-	List<Branch> branchlist;
-	List<Semester> semesterlist;
+	private String selectedbranch;
+	private String selectedsemester;
+	List<String> branchlist;
+	List<String> semesterlist;
 	
 
 	public String addsubject() throws ClassNotFoundException, SQLException {
-		if(classmarkerDAO.addsub(subjectcode, subjectid, subjectname, subjectdesc,selectedbranch.getBranchname(),selectedsemester.getSemestername())) {
+		if(classmarkerDAO.addsub(subjectcode, subjectid, subjectname, subjectdesc,selectedbranch,selectedsemester)) {
+			Connection con = null;
+			PreparedStatement pstmt,pstmt1 = null;
+			ResultSet rs,rs1 = null;
+
+			branchlist = new ArrayList<String>();
+			semesterlist = new ArrayList<String>();
+			
+			con = CommonDAO.getConnection();
+			pstmt = con.prepareStatement("select branchname from branch_mst where status=\"Y\"");
+			rs = pstmt.executeQuery();
+			pstmt1 = con.prepareStatement("select semestername from semester_mst where status=\"Y\"");
+			rs1 = pstmt1.executeQuery();
+			while(rs.next()) {
+				branchlist.add(rs.getString(1));
+			}
+			while(rs1.next()) {
+				semesterlist.add(rs1.getString(1));
+			}
 			return "success";
 		}
 		return "fail";
 	}
 	
+	public String fetchbranchsem() throws ClassNotFoundException, SQLException {
+		Connection con = null;
+		PreparedStatement pstmt,pstmt1 = null;
+		ResultSet rs,rs1 = null;
+
+		branchlist = new ArrayList<String>();
+		semesterlist = new ArrayList<String>();
+		
+		con = CommonDAO.getConnection();
+		pstmt = con.prepareStatement("select branchname from branch_mst where status=\"Y\"");
+		rs = pstmt.executeQuery();
+		pstmt1 = con.prepareStatement("select semestername from semester_mst where status=\"Y\"");
+		rs1 = pstmt1.executeQuery();
+		while(rs.next()) {
+			branchlist.add(rs.getString(1));
+		}
+		while(rs1.next()) {
+			semesterlist.add(rs1.getString(1));
+		}
+		return "success";
+	}
 	
-	public List<Branch> getBranchlist() {
+	public List<String> getBranchlist() {
 		return branchlist;
 	}
 
-	public void setBranchlist(List<Branch> branchlist) {
+	public void setBranchlist(List<String> branchlist) {
 		this.branchlist = branchlist;
 	}
 
-	public List<Semester> getSemesterlist() {
+	public List<String> getSemesterlist() {
 		return semesterlist;
 	}
 
-	public void setSemesterlist(List<Semester> semesterlist) {
+	public void setSemesterlist(List<String> semesterlist) {
 		this.semesterlist = semesterlist;
 	}
 
 	
-	public Branch getSelectedbranch() {
+	public String getSelectedbranch() {
 		return selectedbranch;
 	}
 
-	public void setSelectedbranch(Branch selectedbranch) {
+	public void setSelectedbranch(String selectedbranch) {
 		this.selectedbranch = selectedbranch;
 	}
 
-	public Semester getSelectedsemester() {
+	public String getSelectedsemester() {
 		return selectedsemester;
 	}
 
-	public void setSelectedsemester(Semester selectedsemester) {
+	public void setSelectedsemester(String selectedsemester) {
 		this.selectedsemester = selectedsemester;
 	}
 

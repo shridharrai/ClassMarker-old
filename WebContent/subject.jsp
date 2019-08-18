@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.shubham.actions.Branch,com.shubham.actions.FetchBranchSemester,java.util.List"%>
+<%@page import="com.shubham.actions.Branch,com.shubham.actions.FetchSubject,java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="s" uri="/struts-tags" %>
@@ -23,6 +23,34 @@
 	<%-- <s:combobox list="semesterlist"><s:property value="semestername"/></s:combobox> --%>
 	<s:submit value="submit" cssClass="form-group btn btn-primary mx-5"/>
 </s:form>
+
+<s:form name="showsubject" action="showsubject">
+                <%-- <s:textfield name="username" /> --%>
+                <s:submit value="Fetch Records"/>
+</s:form>
+
+<table>
+	<thead>
+		<tr>
+			<th>Subject Code</th>
+			<th>Subject Id</th>
+			<th>Subject Name</th>
+			<th>SUbject Description</th>
+			<th>Branch Name</th>
+			<th>Semester Name</th>
+		</tr>
+	</thead>
+	<s:iterator value="subjectlist">
+	<tr>
+			<td><s:property value="subjectcode"/></td>
+			<td><s:property value="subjectid"/></td>
+			<td><s:property value="subjectname"/></td>
+			<td><s:property value="subjectdesc"/></td>
+			<td><s:property value="selectedbranch"/></td>
+			<td><s:property value="selectedsemester"/></td>
+	<tr>
+	</s:iterator>
+</table>
 </div>
 </body>
 </html>
