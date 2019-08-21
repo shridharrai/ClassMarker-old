@@ -6,7 +6,7 @@ create table app_startup(user_time varchar(50) UNIQUE NOT NULL,status char(1) de
 
 insert into app_startup (user_time) values("First Time");
 
-create table user_mst(uid integer AUTO_INCREMENT,userid varchar(50) UNIQUE NOT NULL,contact varchar(20),email varchar(50) unique not null,password varchar(50) not null,status char(1) default 'Y', primary key(uid));
+create table user_mst(uid integer AUTO_INCREMENT,userenrollment varchar(20) UNIQUE NOT NULL,userid varchar(50) UNIQUE NOT NULL,contact varchar(20),email varchar(50) unique not null,password varchar(50) not null,status char(1) default 'Y', primary key(uid));
 
 insert into user_mst(userid,email,password) values("admin","admin@gmail.com","admin");
 
@@ -19,3 +19,19 @@ create table branch_mst(branchid integer AUTO_INCREMENT,branchname varchar(50) u
 CREATE TABLE SUBJECT_BRANCH_SEMESTER_MAPPING (MAPID integer AUTO_INCREMENT, SUBJECTID INTEGER REFERENCES subject_mst(sid) ON DELETE CASCADE,branchid INTEGER REFERENCES branch_mst(branchid) ON DELETE CASCADE ,semesterid INTEGER REFERENCES semester_mst(semid) ON DELETE CASCADE ,STATUS CHAR(1) DEFAULT 'Y',primary key(MAPID));
 
 select subject_mst.subjectcode, subject_mst.subjectid, subject_mst.subjectname, subject_mst.subjectdesc, branch_mst.branchname, semester_mst.semestername from subject_mst, branch_mst, semester_mst, subject_branch_semester_mapping where subject_mst.sid=subject_branch_semester_mapping.subjectid and branch_mst.branchid=subject_branch_semester_mapping.branchid and semester_mst.semid=subject_branch_semester_mapping.semesterid;
+
+create table role_mst(roleid integer AUTO_INCREMENT,rolename varchar(50) UNIQUE NOT NULL,roledesc varchar(100) not null,status char(1) default 'Y', primary key(roleid));
+
+insert into role_mst(rolename,roledesc) values("admin","Admin has all the rights");
+
+CREATE TABLE USER_ROLE_MAPPING (MAPID integer AUTO_INCREMENT, USERID INTEGER REFERENCES user_mst(uid) ON DELETE CASCADE,ROLEID INTEGER REFERENCES role_mst(roleid) ON DELETE CASCADE ,STATUS CHAR(1) DEFAULT 'Y',primary key(MAPID) );
+
+INSERT INTO USER_ROLE_MAPPING (USERID,ROLEID) VALUES(1,1);
+
+create table right_mst(rightid integer AUTO_INCREMENT,rightname varchar(50) UNIQUE NOT NULL,description varchar(100) not null,link varchar(50) unique not null, primary key(rightid));
+
+insert into right_mst(rightname,description,link) values("addrole","add of role","role");
+
+CREATE TABLE ROLE_RIGHT_MAPPING (MAPID integer AUTO_INCREMENT, ROLEID INTEGER REFERENCES ROLE_MST(ROLEID) ON DELETE CASCADE,RIGHTID INTEGER REFERENCES RIGHT_MST(RIGHTID) ON DELETE CASCADE ,STATUS CHAR(1) DEFAULT 'Y',primary key(MAPID));
+
+INSERT INTO ROLE_RIGHT_MAPPING (ROLEID,RIGHTID) VALUES(1,1);
