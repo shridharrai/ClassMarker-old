@@ -12,13 +12,13 @@
 	<result name="fail">/login.jsp</result>
 	</action>
 	
-	<action name="comboBoxAction" class="com.shubham.actions.ComboBoxAction" method="display">
+	<!-- <action name="comboBoxAction" class="com.shubham.actions.ComboBoxAction" method="display">
 	<result name="none">/combobox.jsp</result>
    </action>
 		
    <action name="resultAction" class="com.shubham.actions.ComboBoxAction">
 	<result name="success">/result.jsp</result>
-   </action>
+   </action> -->
 	
 	
 	</package>
