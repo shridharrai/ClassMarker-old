@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.NamingException;
 
@@ -199,7 +200,56 @@ public interface classmarkerDAO {
 		}
 		return false;
 	}
+	
+	public static boolean addrole(String rolename,String roledesc, String selectedright) throws SQLException, ClassNotFoundException {
+		Connection con = null;
+		PreparedStatement pstmt,pstmtmap = null;
+//		ResultSet rs,rs1 = null;
 
+		String regex=",";
+	    String[] rights=selectedright.split(regex);
+//	    for(String str : rights)
+//	    {
+//	    	System.out.println(str.trim());
+//	    }
+	    
+		
+		con = CommonDAO.getConnection();
+		pstmt = con.prepareStatement("insert into role_mst(rolename,roledesc) values(?,?)");
+		pstmt.setString(1, rolename);
+		pstmt.setString(2, roledesc);
+		int recordCount = pstmt.executeUpdate();
+//		System.out.println(selectedright);
+		if(recordCount>0) {
+			for(String str : rights)
+		    {
+				pstmtmap = con.prepareStatement("insert into role_right_mapping(roleid,rightid) values((select roleid from role_mst where rolename=?),(select rightid from right_mst where rightname=?))");
+				pstmtmap.setString(1, rolename);
+				pstmtmap.setString(2, str.trim());
+				int recordcount1 = pstmtmap.executeUpdate();
+		    	System.out.println(str.trim());
+		    }
+			System.out.println("Role Added");
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean addstudent(String userid,String contact,String email,String pwd,String selectedbranch,String selectedsemester,ArrayList<String> subjects) throws SQLException, ClassNotFoundException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+		con = CommonDAO.getConnection();
+		System.out.println("Before Running update Statement");
+		pstmt = con.prepareStatement(" update user_mst set userid=?, contact=?, email=? , password=?");
+		pstmt.setString(1,userid);
+		pstmt.setString(2, contact);
+		pstmt.setString(3, email);
+		pstmt.setString(4,pwd);
+		pstmt.executeUpdate();
+		return true;
+	}
+	
 //	public static ResultSet existingbranch() throws ClassNotFoundException, SQLException {
 //		Connection con = null;
 //		PreparedStatement pstmt = null;
