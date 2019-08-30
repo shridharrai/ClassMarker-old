@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+ 
+<package name="teacher" namespace="/" extends="struts-default">
+
+<action name="showgroupstudent" class="com.shubham.actions.Group" method="fetchstudent">
+	<result name="success">/group.jsp</result>
+	<result name="fail">/login.jsp</result>
+	</action> 
+	
+	<action name="addgroup" class="com.shubham.actions.Group" method="addgroup">
+	<result name="success">/group.jsp</result>
+	<result name="fail">/dashboard.jsp</result>
+	</action>	
+	
+	<action name="showgroup" class="com.shubham.actions.Group" method="fetchgroup">
+	<result name="success">/group.jsp</result>
+	<result name="fail">/login.jsp</result>
+	</action>
+	
+	<action name="pretestcache" class="com.shubham.actions.Test" method="fetchbranchsemsubjectgroupchoice">
+	<result name="success">/addtest.jsp</result>
+	<result name="fail">/login.jsp</result>
+	</action> 
+	
+	<action name="addtest" class="com.shubham.actions.Test" method="addtest">
+	<result name="success">/addtest.jsp</result>
+	<result name="fail">/dashboard.jsp</result>
+	</action>	
+	
+</package>
+
+
+</struts>
