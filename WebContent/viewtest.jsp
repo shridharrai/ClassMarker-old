@@ -12,9 +12,9 @@
 </head>
 <body>
 <div class='w-100 float-right pr-2'>
-	<h1 class='text-center btn btn-outline-success w-100 display-1'>Add Subject</h1>
+	<h1 class='text-center btn btn-outline-success w-100 display-1'>View Test</h1>
 
-<s:form name="showstudent" action="showstudent">
+<s:form name="showtest" action="showtest">
                 <%-- <s:textfield name="username" /> --%>
                 <s:submit value="Fetch Records"/>
 </s:form>
@@ -22,24 +22,26 @@
 <table>
 	<thead>
 		<tr>
-			<th>Student Enrollment No.</th>
-			<th>Student Name</th>
-			<th>Student Contact No.</th>
-			<th>Student Email Id</th>
-			<!-- <th>Student's Branch</th>
-			<th>Student's Semester</th>
-			<th>Student's Subjects</th> -->
-			<!-- <th>Student's Percentage</th> -->
+			<th>Test Name</th>
+			<th>Marks per Question</th>
+			<th> </th>
+			<th>Branch Name</th>
+			<th>Semester Name</th>
+			<th>Subject Name</th>
+			<th>Group Names</th>
+			<th> </th>
 		</tr>
 	</thead>
-	<s:iterator value="studentlist">
+	<s:iterator value="testlist">
 	<tr>
-			<td><s:property value="studentenrollment"/></td>
-			<td><s:property value="studentname"/></td>
-			<td><s:property value="studentcontact"/></td>
-			<td><s:property value="studentemail"/></td>
-			<%-- <td><s:property value="studentbranch"/></td>
-			<td><s:property value="studentsemester"/></td> --%>
+			<td><s:property value="testname"/></td>
+			<td><s:property value="marksperquestion"/></td>
+			<td><button clas="btn btn-primary">View Questions</button></td>
+			<td><s:property value="selectedbranch"/></td>
+			<td><s:property value="selectedsemester"/></td>
+			<td><s:property value="selectedsubject"/></td>
+			<td><s:property value="selectedgroup"/></td>
+			<td><button clas="btn btn-success">View Result</button></td>
 	<tr>
 	</s:iterator>
 </table>
