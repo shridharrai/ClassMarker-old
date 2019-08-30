@@ -10,7 +10,7 @@ import java.util.List;
 import com.shubham.dao.CommonDAO;
 import com.shubham.dao.classmarkerDAO;
 
-public class RegisterStudent {
+public class RegisterTeacher {
 
 	private String userenrollment;
 	private String userid;
@@ -19,39 +19,64 @@ public class RegisterStudent {
 	private String pwd;
 	private String selectedbranch;
 	private String selectedsemester;
+	private String selectedsubject;
 	List<String> branchlist;
 	List<String> semesterlist;
+	List<String> subjectlist;
 	
-	public String addstudent() throws ClassNotFoundException, SQLException {
-		if(classmarkerDAO.addstudent(userenrollment, userid, contact, email, pwd, selectedbranch, selectedsemester)) {
+	public String addteacher() throws ClassNotFoundException, SQLException {
+		if(classmarkerDAO.addteacher(userenrollment, userid, contact, email, pwd, selectedbranch, selectedsemester,selectedsubject)) {
 			return "success";
 		}
 		
 		return "fail";
 	}
 	
-	public String fetchbranchsem() throws ClassNotFoundException, SQLException {
+	public String fetchbranchsemsubject() throws ClassNotFoundException, SQLException {
 		Connection con = null;
-		PreparedStatement pstmt,pstmt1 = null;
-		ResultSet rs,rs1 = null;
+		PreparedStatement pstmt,pstmt1,pstmt2 = null;
+		ResultSet rs,rs1,rs2 = null;
 
 		branchlist = new ArrayList<String>();
 		semesterlist = new ArrayList<String>();
+		subjectlist = new ArrayList<String>();
 		
 		con = CommonDAO.getConnection();
 		pstmt = con.prepareStatement("select branchname from branch_mst where status=\"Y\"");
 		rs = pstmt.executeQuery();
 		pstmt1 = con.prepareStatement("select semestername from semester_mst where status=\"Y\"");
 		rs1 = pstmt1.executeQuery();
+		pstmt2 = con.prepareStatement("select subjectname from subject_mst where status=\"Y\"");
+		rs2 = pstmt2.executeQuery();
 		while(rs.next()) {
 			branchlist.add(rs.getString(1));
 		}
 		while(rs1.next()) {
 			semesterlist.add(rs1.getString(1));
 		}
+		while(rs2.next()) {
+			subjectlist.add(rs2.getString(1));
+		}
 		return "success";
 	}
 	
+	
+	public String getSelectedsubject() {
+		return selectedsubject;
+	}
+
+	public void setSelectedsubject(String selectedsubject) {
+		this.selectedsubject = selectedsubject;
+	}
+
+	public List<String> getSubjectlist() {
+		return subjectlist;
+	}
+
+	public void setSubjectlist(List<String> subjectlist) {
+		this.subjectlist = subjectlist;
+	}
+
 	public String getUserenrollment() {
 		return userenrollment;
 	}

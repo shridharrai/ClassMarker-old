@@ -39,7 +39,7 @@ public class FetchStudent extends ActionSupport{// implements ModelDriven<ArrayL
 		Student student = new Student();
 		
 		con = CommonDAO.getConnection();
-		pstmt = con.prepareStatement("select user_mst.userenrollment,user_mst.userid,user_mst.contact,user_mst.email from user_mst");
+		pstmt = con.prepareStatement("select user_mst.userid,user_mst.userenrollment,user_mst.contact,user_mst.email from user_mst,role_mst,user_role_mapping where user_mst.uid=user_role_mapping.userid and role_mst.roleid=user_role_mapping.roleid and role_mst.rolename=\"student\"");
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
 			student = new Student();
