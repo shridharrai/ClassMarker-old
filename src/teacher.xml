@@ -7,27 +7,27 @@
  
 <package name="teacher" namespace="/" extends="struts-default">
 
-<action name="showgroupstudent" class="com.shubham.actions.Group" method="fetchstudent">
+<action name="showgroupstudent" class="com.classmarker.actions.Group" method="fetchstudent">
 	<result name="success">/group.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action> 
 	
-	<action name="addgroup" class="com.shubham.actions.Group" method="addgroup">
+	<action name="addgroup" class="com.classmarker.actions.Group" method="addgroup">
 	<result name="success">/group.jsp</result>
 	<result name="fail">/dashboard.jsp</result>
 	</action>	
 	
-	<action name="showgroup" class="com.shubham.actions.Group" method="fetchgroup">
+	<action name="showgroup" class="com.classmarker.actions.Group" method="fetchgroup">
 	<result name="success">/group.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action>
 	
-	<action name="pretestcache" class="com.shubham.actions.Test" method="fetchbranchsemsubjectgroupchoice">
+	<action name="pretestcache" class="com.classmarker.actions.Test" method="fetchbranchsemsubjectgroupchoice">
 	<result name="success">/addtest.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action> 
 	
-	<action name="addtest" class="com.shubham.actions.Test" method="addtest">
+	<action name="addtest" class="com.classmarker.actions.Test" method="addtest">
 	<result name="success">/addtest.jsp</result>
 	<result name="fail">/dashboard.jsp</result>
 	</action>	

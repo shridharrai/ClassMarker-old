@@ -8,27 +8,27 @@
 	<include file="teacher.xml"></include>
 	<package name="default" namespace="/" extends="struts-default">
 	
-	<action name="login" class="com.shubham.actions.Login" method="dologin">
+	<action name="login" class="com.classmarker.actions.Login" method="dologin">
 	<result name="success">/dashboard.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action>
 	
-	<action name="showbranchsemester" class="com.shubham.actions.RegisterStudent" method="fetchbranchsem">
+	<action name="showbranchsemester" class="com.classmarker.actions.RegisterStudent" method="fetchbranchsem">
 	<result name="success">/registerstudent.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action>
 	
-	<action name="registerstudent" class="com.shubham.actions.RegisterStudent" method="addstudent">
+	<action name="registerstudent" class="com.classmarker.actions.RegisterStudent" method="addstudent">
 	<result name="success">/dashboard.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action>
 	
-	<action name="showbranchsemestersubject" class="com.shubham.actions.RegisterTeacher" method="fetchbranchsemsubject">
+	<action name="showbranchsemestersubject" class="com.classmarker.actions.RegisterTeacher" method="fetchbranchsemsubject">
 	<result name="success">/registerteacher.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action>
 	
-	<action name="registerteacher" class="com.shubham.actions.RegisterTeacher" method="addteacher">
+	<action name="registerteacher" class="com.classmarker.actions.RegisterTeacher" method="addteacher">
 	<result name="success">/dashboard.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action>

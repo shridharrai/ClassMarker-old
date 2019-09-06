@@ -6,55 +6,55 @@
 <struts>
  
 <package name="admin" namespace="/" extends="struts-default">
-<action name="home" class="com.shubham.actions.Firsttime" method="execute">
+<action name="home" class="com.classmarker.actions.Firsttime" method="execute">
 	<result name="success">/index.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action>
-	<action name="firstlogin" class="com.shubham.actions.Firsttime" method="firstlogin">
+	<action name="firstlogin" class="com.classmarker.actions.Firsttime" method="firstlogin">
 	<result name="success">/firstpwd.jsp</result>
 	<result name="startupfail">/login.jsp</result>
 	<result name="partialfail">/index.jsp</result>
 	<result name="fail">/index.jsp</result>
 	</action>
-	<action name="pwdchange" class="com.shubham.actions.Firstupdatepwd" method="firstupdatepwd">
+	<action name="pwdchange" class="com.classmarker.actions.Firstupdatepwd" method="firstupdatepwd">
 	<result name="success">/login.jsp</result>
 	<result name="fail">/firstpwd.jsp</result>
 	</action>
-	<action name="addsubject" class="com.shubham.actions.Subject" method="addsub">
+	<action name="addsubject" class="com.classmarker.actions.Subject" method="addsub">
 	<result name="success">/login.jsp</result>
 	<result name="fail">/dashboard.jsp</result>
 	</action>
-	<action name="addsem" class="com.shubham.actions.Semester" method="addsem">
+	<action name="addsem" class="com.classmarker.actions.Semester" method="addsem">
 	<result name="success">/semester.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action>
 	
-	<action name="showsemester" class="com.shubham.actions.FetchSemester" method="execute">
+	<action name="showsemester" class="com.classmarker.actions.FetchSemester" method="execute">
 	<result name="success">/semester.jsp</result>
 	<result name="fail">/dashboard.jsp</result>
 	</action>
 	
-	<action name="addbranch" class="com.shubham.actions.Branch" method="addbranch">
+	<action name="addbranch" class="com.classmarker.actions.Branch" method="addbranch">
 	<result name="success">/branch.jsp</result>
 	<result name="fail">/dashboard.jsp</result>
 	</action>	
 	
-	<action name="showbranch" class="com.shubham.actions.FetchBranch" method="execute">
+	<action name="showbranch" class="com.classmarker.actions.FetchBranch" method="execute">
 	<result name="success">/branch.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action>
 	
-	<action name="showright" class="com.shubham.actions.Role" method="fetchright">
+	<action name="showright" class="com.classmarker.actions.Role" method="fetchright">
 	<result name="success">/role.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action> 
 	
-	<action name="addrole" class="com.shubham.actions.Role" method="addrole">
+	<action name="addrole" class="com.classmarker.actions.Role" method="addrole">
 	<result name="success">/role.jsp</result>
 	<result name="fail">/dashboard.jsp</result>
 	</action>	
 	
-	<action name="showrole" class="com.shubham.actions.Role" method="fetchroles">
+	<action name="showrole" class="com.classmarker.actions.Role" method="fetchroles">
 	<result name="success">/role.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action>
@@ -63,17 +63,22 @@
 	<result name="success">/result.jsp</result>
    </action> -->
 	
-	<action name="showsemesterbranch" class="com.shubham.actions.Subject" method="fetchbranchsem">
+	<action name="showsemesterbranch" class="com.classmarker.actions.Subject" method="fetchbranchsem">
 	<result name="success">/subject.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action> 
 	
-	<action name="showsubject" class="com.shubham.actions.FetchSubject" method="execute">
+	<action name="showsubject" class="com.classmarker.actions.FetchSubject" method="execute">
 	<result name="success">/subject.jsp</result>
 	<result name="fail">/login.jsp</result>
-	</action> 
+	</action>
+	 
+	<action name="addsubject" class="com.classmarker.actions.Subject" method="addsubject">
+	<result name="success">/subject.jsp</result>
+	<result name="fail">/login.jsp</result>
+	</action>
 	
-	<action name="showstudent" class="com.shubham.actions.FetchStudent" method="execute">
+	<action name="showstudent" class="com.classmarker.actions.FetchStudent" method="execute">
 	<result name="success">/showstudent.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action> 
@@ -83,10 +88,7 @@
 	<result name="fail">/login.jsp</result>
 	</action>   -->
 	
-	<action name="addsubject" class="com.shubham.actions.Subject" method="addsubject">
-	<result name="success">/subject.jsp</result>
-	<result name="fail">/login.jsp</result>
-	</action>
+	
 	
 	<!-- <action name="addsubject" class="com.shubham.actions.Subject" method="addsubject">
 	<result name="success">/subject.jsp</result>
