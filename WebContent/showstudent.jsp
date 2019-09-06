@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.shubham.actions.Branch,com.shubham.actions.FetchSubject,java.util.List"%>
+<%@page import="com.classmarker.actions.Branch,com.classmarker.actions.FetchSubject,java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="s" uri="/struts-tags" %>
