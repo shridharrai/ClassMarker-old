@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+ 
+<package name="admin" namespace="/" extends="struts-default">
+ <action name="home" class="com.shridhar.actions.Firsttime" method="execute">
+	<result name="success">/index.jsp</result>
+	<result name="fail">/login.jsp</result>
+	</action>
+	<action name="firstlogin" class="com.shridhar.actions.Firsttime" method="firstlogin">
+	<result name="success">/firstpwd.jsp</result>
+	<result name="startupfail">/login.jsp</result>
+	<result name="partialfail">/index.jsp</result>
+	<result name="fail">/index.jsp</result>
+	</action>
+	<action name="pwdchange" class="com.shridhar.actions.Firstupdatepwd" method="firstupdatepwd">
+	<result name="success">/login.jsp</result>
+	<result name="fail">/firstpwd.jsp</result>
+	</action>
+	<action name="showsemesterbranch" class="com.shridhar.actions.Subject" method="fetchbranchsem">
+	<result name="success">/subject.jsp</result>
+	<result name="fail">/login.jsp</result>
+	</action>
+	<action name="addsubject" class="com.shridhar.actions.Subject" method="addsubject">
+	<result name="success">/subject.jsp</result>
+	<result name="fail">/login.jsp</result>
+	</action>
+	<action name="showsubject" class="com.shridhar.actions.FetchSubject" method="execute">
+	<result name="success">/subject.jsp</result>
+	<result name="fail">/login.jsp</result>
+	</action>
+	<action name="addbranch" class="com.shridhar.actions.Branch" method="addbranch">
+	<result name="success">/branch.jsp</result>
+	<result name="fail">/dashboard.jsp</result>
+	</action>
+	<action name="showbranch" class="com.shridhar.actions.FetchBranch" method="execute">
+	<result name="success">/branch.jsp</result>
+	<result name="fail">/login.jsp</result>
+	</action>
+	<action name="addsem" class="com.shridhar.actions.Semester" method="addsem">
+	<result name="success">/semester.jsp</result>
+	<result name="fail">/login.jsp</result>
+	</action>
+	<action name="showsemester" class="com.shridhar.actions.FetchSemester" method="execute">
+	<result name="success">/semester.jsp</result>
+	<result name="fail">/dashboard.jsp</result>
+	</action>
+	<action name="fetchright" class="com.shridhar.actions.FetchRights" method="fetchright">
+	<result name="success">/role.jsp</result>
+	<result name="fail">/dashboard.jsp</result>
+	</action>
+	<action name="addrole" class="com.shridhar.actions.RoleAction" method="addrole">
+	<result name="success">/role.jsp</result>
+	<result name="fail">/dashboard.jsp</result>
+	</action>
+	<action name="showrole" class="com.shridhar.actions.RoleAction" method="fetchroles">
+	<result name="success">/role.jsp</result>
+	<result name="fail">/login.jsp</result>
+	</action>  
+	</package>
+	</struts>
