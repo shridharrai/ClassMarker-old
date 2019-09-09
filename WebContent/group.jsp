@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%@page import="java.util.ArrayList,com.classmarker.actions.Role" %>
+     <%@page import="java.util.ArrayList,com.classmarker.teacher.actions.Group" %>
     <%@taglib prefix="s" uri="/struts-tags" %>
    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -36,9 +36,8 @@ function showBranch(){
                 <%-- <s:textfield name="username" /> --%>
                 <s:submit value="Fetch Records"/>
 </s:form>
-
-<table>
-	<thead>
+<table class="table table-bordered">
+	<thead class="thead-dark">
 		<tr>
 			<th>Group Name</th>
 			<th>Group Description</th>

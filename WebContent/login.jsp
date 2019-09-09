@@ -1,24 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="s" uri="/struts-tags" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="ISO-8859-1">
+<title>Login</title>
 <link href="css/bootstrap.min.css" rel ="stylesheet">
 <link href="css/style.css" rel ="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
+<script>
+window.addEventListener("load", init);
+function init() {
+	let message = document.getElementById('alert');
+	console.log("Message is ",message.innerText);
+	if (message.innerText == "Invalid") {
+		message.innerText = " ";
+		alert("Invalid Userid or Password....");
+	}
+}
+</script>
 </head>
 <body>
-
 <div class="container-fluid">
 	 <section class="sign-in">
             <div class="container">
+            <h6 id="alert" class="text-center"><s:property value="message"/></h6>
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
+                        <figure><img src="images/signin-image.jpg" alt="sign in image"></figure>
                     </div>
 
                     <div class="signin-form">
