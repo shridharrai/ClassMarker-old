@@ -3,25 +3,20 @@ package com.classmarker.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-
+import java.util.ResourceBundle;
 
 public interface CommonDAO {
-
 	static Connection getConnection() throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.cj.jdbc.Driver");
+		ResourceBundle rb = ResourceBundle.getBundle("db");
+		Class.forName(rb.getString("driver"));
 		Connection con = null;
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/classmarker","root","shubham");
-		if(con!=null) {
-			System.out.println("Connnection Created.");
-//			con.close();
-		}
-		else {
-			System.out.println("Not Created.");
+		con = DriverManager.getConnection(rb.getString("url"), 
+				rb.getString("userid"), rb.getString("password"));
+		if (con != null) {
+			System.out.println("Connection created...");
+		} else {
+			System.out.println("Not created...");
 		}
 		return con;
 	}
-//	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-//		CommonDAO.getConnection();
-//	}
 }

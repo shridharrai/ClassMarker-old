@@ -1,38 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC
-"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-"http://struts.apache.org/dtds/struts-2.0.dtd">
- 
-<struts>
- 
-<package name="teacher" namespace="/" extends="struts-default">
-
-<action name="showgroupstudent" class="com.classmarker.actions.Group" method="fetchstudent">
-	<result name="success">/group.jsp</result>
-	<result name="fail">/login.jsp</result>
-	</action> 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+	<struts>
+	<constant name="struts.devMode" value="true" />
+	<package name="teacher" namespace="/" extends="struts-default">
 	
-	<action name="addgroup" class="com.classmarker.actions.Group" method="addgroup">
-	<result name="success">/group.jsp</result>
-	<result name="fail">/dashboard.jsp</result>
-	</action>	
-	
-	<action name="showgroup" class="com.classmarker.actions.Group" method="fetchgroup">
-	<result name="success">/group.jsp</result>
-	<result name="fail">/login.jsp</result>
+	<action name="registerteacher" class="com.classmarker.teacher.actions.RegisterTeacher" method="addteacher">
+	<result name="success">/login.jsp</result>
+	<result name="fail">/registerteacher.jsp</result>
 	</action>
-	
-	<action name="pretestcache" class="com.classmarker.actions.Test" method="fetchbranchsemsubjectgroupchoice">
-	<result name="success">/addtest.jsp</result>
-	<result name="fail">/login.jsp</result>
-	</action> 
-	
-	<action name="addtest" class="com.classmarker.actions.Test" method="addtest">
-	<result name="success">/addtest.jsp</result>
-	<result name="fail">/dashboard.jsp</result>
-	</action>	
-	
-</package>
-
-
-</struts>
+	<action name="showbranchsemestersubject" class="com.classmarker.teacher.actions.RegisterTeacher" method="fetchbranchsemsubject">
+	<result name="success">/registerteacher.jsp</result>
+	<result name="fail">/registerteacher.jsp</result>
+	</action>
+	</package>
+	</struts>

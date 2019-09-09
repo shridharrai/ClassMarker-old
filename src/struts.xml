@@ -6,41 +6,11 @@
 	<constant name="struts.devMode" value="true" />
 	<include file="admin.xml"></include>
 	<include file="teacher.xml"></include>
+	<include file="student.xml"></include>
 	<package name="default" namespace="/" extends="struts-default">
-	
-	<action name="login" class="com.classmarker.actions.Login" method="dologin">
+	<action name="login" class="com.classmarker.actions.Login" method="doLogin">
 	<result name="success">/dashboard.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action>
-	
-	<action name="showbranchsemester" class="com.classmarker.actions.RegisterStudent" method="fetchbranchsem">
-	<result name="success">/registerstudent.jsp</result>
-	<result name="fail">/login.jsp</result>
-	</action>
-	
-	<action name="registerstudent" class="com.classmarker.actions.RegisterStudent" method="addstudent">
-	<result name="success">/dashboard.jsp</result>
-	<result name="fail">/login.jsp</result>
-	</action>
-	
-	<action name="showbranchsemestersubject" class="com.classmarker.actions.RegisterTeacher" method="fetchbranchsemsubject">
-	<result name="success">/registerteacher.jsp</result>
-	<result name="fail">/login.jsp</result>
-	</action>
-	
-	<action name="registerteacher" class="com.classmarker.actions.RegisterTeacher" method="addteacher">
-	<result name="success">/dashboard.jsp</result>
-	<result name="fail">/login.jsp</result>
-	</action>
-	
-	<!-- <action name="comboBoxAction" class="com.shubham.actions.ComboBoxAction" method="display">
-	<result name="none">/combobox.jsp</result>
-   </action>
-		
-   <action name="resultAction" class="com.shubham.actions.ComboBoxAction">
-	<result name="success">/result.jsp</result>
-   </action> -->
-	
-	
 	</package>
 	</struts>

@@ -4,18 +4,22 @@ import java.sql.SQLException;
 
 import javax.naming.NamingException;
 
-import com.classmarker.dao.classmarkerDAO;
+import com.classmarker.dao.ClassmarkerDAO;
 
 public class Login {
-
 	private String userid;
 	private String password;
-	
-	public String dologin() throws ClassNotFoundException, SQLException, NamingException {
-		if(classmarkerDAO.login(userid, password)==true) {
-			return "success";
-		}
-		return "fail";
+	private String message;
+	@Override
+	public String toString() {
+		return "Login [userid=" + userid + ", password=" + password + 
+				", message=" + message + "]";
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	public String getUserid() {
 		return userid;
@@ -30,5 +34,13 @@ public class Login {
 		this.password = password;
 	}
 	
-	
+	public String doLogin() throws ClassNotFoundException, SQLException, NamingException {
+		if (ClassmarkerDAO.login(userid, password)) {
+			System.out.println("Inside dologin....");
+			return "success";
+		}
+		System.out.println("Outside the function...");
+		this.message = "Invalid";
+		return "fail";
+	}
 }
