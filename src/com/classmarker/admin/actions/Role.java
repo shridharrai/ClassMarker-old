@@ -97,7 +97,7 @@ public class Role {
 	}
 
 	public String addrole() throws ClassNotFoundException, SQLException {
-		fetchright();
+//		fetchright();
 		if(AdminDAO.addrole(rolename, roledesc,selectedright)==true) {
 			fetchroles();
 			this.message = "Added";

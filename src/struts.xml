@@ -7,10 +7,12 @@
 	<include file="admin.xml"></include>
 	<include file="teacher.xml"></include>
 	<include file="student.xml"></include>
+	
 	<package name="default" namespace="/" extends="struts-default">
 	<action name="login" class="com.classmarker.actions.Login" method="doLogin">
 	<result name="success">/dashboard.jsp</result>
 	<result name="fail">/login.jsp</result>
 	</action>
 	</package>
+	
 	</struts>
